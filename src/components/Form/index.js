@@ -9,6 +9,9 @@ const Form = () => {
   const [role, setRole] = useState('');
   const [course, setCourse] = useState('');
   const [phone, setPhone] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [github, setGithub] = useState('');
+  const [behance, setBehance] = useState('');
 
   const [showPhotos, setShowPhotos] = useState('');
   const [showSignature, setShowSignature] = useState('');
@@ -17,10 +20,6 @@ const Form = () => {
     e.preventDefault();
     console.log('nome: ' + name + ' role: ' + role + 'curso: ' + course + 'Tel: ' + phone);
     setShowSignature(!showSignature);
-  }
-
-  const handleGallery = () => {
-    setShowPhotos(!showPhotos);
   }
 
   return (
@@ -36,7 +35,6 @@ const Form = () => {
             onChange={(e)=>setName(e.target.value)}
             // mandatory
           />
-
           <br/>
 
           <Input
@@ -47,7 +45,6 @@ const Form = () => {
             onChange={(e)=>setRole(e.target.value)}
             // mandatory
           />
-
           <br/>
 
           <Input
@@ -58,7 +55,10 @@ const Form = () => {
             onChange={(e)=>setCourse(e.target.value)}
             // mandatory
           />
+          <br/>
 
+          <span>Contactos:</span>
+          <br/>
           <br/>
 
           <Input
@@ -66,21 +66,59 @@ const Form = () => {
             type='tel'
             name='course'
             placeHolder='Indica o teu nº de telemóvel'
-            onChange={(e)=>setPhone(e.target.value)}
+            onChange={(e)=>setPhone(e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{3})/g, '$1 ').trim())}
             // mandatory
           />
-
           <br/>
 
-          <button type='button' onClick={handleGallery}>Escolher foto</button>
-
+          <Input
+            label='LinkedIn'
+            // https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
+            type='text'
+            name='linkedin'
+            placeHolder='Username do linkedn'
+            onChange={(e)=>setLinkedin(e.target.value)}
+            // mandatory
+          />
           <br/>
+
+          <Input
+            label='GitHub'
+            type='text'
+            name='github'
+            placeHolder='Username do github'
+            onChange={(e)=>setGithub(e.target.value)}
+            // mandatory
+          />
+          <br/>
+
+          <Input
+            label='Behance'
+            type='text'
+            name='behance'
+            placeHolder='Username do behance'
+            onChange={(e)=>setBehance(e.target.value)}
+            // mandatory
+          />
+          <br/>
+
+
+          <Jekers pickImage={false}/>
 
           <button type='submit'>Submeter</button>
         </div>
       </form>
-      {showSignature ? <Signature jekerName={name}/> : null}
-      {showPhotos ? <Jekers close={handleGallery} /> : null}
+      {showSignature ?
+        <Signature 
+          jekerName={name}
+          jekerRole={role}
+          jekerCourse={course}
+          jekerPhone={phone}
+          jekerLinkedin={linkedin}
+          jekerGithub={github}
+          jekerBehance={behance}
+        />
+      : null}
     </>
   )
 }

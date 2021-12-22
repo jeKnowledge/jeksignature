@@ -1,0 +1,29 @@
+@font-face {
+  font-family: SuisseIntRegular;
+  src: url('../assets/fonts/SuisseIntlCond-Regular-WebS.ttf');
+}
+
+@font-face {
+  font-family: SuisseIntMedium;
+  src: url('../assets/fonts/SuisseIntlCond-Medium-WebS.ttf');
+}
+
+@font-face {
+  font-family: SuisseIntBold;
+  src: url('../assets/fonts/SuisseIntlCond-Bold-WebS.ttf');
+}
+
+$signatureHeading: 20px SuisseIntBold;
+$signatureSubtitle: 12px SuisseIntMedium;
+$signatureText: 12px SuisseIntRegular;
+
+$heading: 32px SuisseIntBold;
+$subtitle: 20px SuisseIntMedium;
+$text: 16px SuisseIntRegular;
+
+$dark: #101010;
+$black: #3E3C39;
+$white: #FFFFFF;
+$gray: #AEADAA;
+$lightBlue: #7CCCED;
+$darkBlue: #1690C3;

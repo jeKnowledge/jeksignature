@@ -1,6 +1,9 @@
+@import '../../styles/variables.scss';
+
 .contentContainer {
   width: 100vw;
   height: 100vh;
+  background-color: $dark;
   overflow: hidden;
   display: flex;
   flex-direction: column;

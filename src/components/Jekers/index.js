@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import propTypes from 'prop-types';
-import {jekers, jekersContainer, jeker, closeBtn} from './jekers.module.scss';
+import {jekers, jekersContainer, jeker, closeBtn, selectedJeker, signatureImage} from './jekers.module.scss';
 
-const Jekers = ({close}) => {
+const Jekers = ({pickImage}) => {
   const [jekerData, setJekerData] = useState();
+  const [jekerImage, setJekerImage] = useState('');
+  const [showGallery, setShowGallery] = useState(false);
 
   const getData = async () => {
     try {
@@ -21,17 +23,38 @@ const Jekers = ({close}) => {
     getData();
   }, []);
 
+  const getImage = (image) => {
+    setJekerImage(image);
+    console.log(jekerImage);
+   }   
+
+   const handleGallery = () => {
+     setShowGallery(!showGallery);
+   }
+
   return (
-    <div className={jekers}>
-      <div className={jekersContainer}>
-        {jekerData?.map((item, i) => (
-          <div key={i} className={jeker}>
-            <img src={item.Imagem} alt={item.Nome + '_portrait'}/>
-            <p>{item.Nome}</p>
-          </div>
-        ))}
+    <div>
+    {pickImage ? (
+    <div className={signatureImage}>
+      <img src={jekerImage} alt='choosed-jeker'/>
+    </div>
+    ) : (
+    <button type='button' onClick={handleGallery}>Escolher foto</button> 
+    )}
+
+      {showGallery ? (
+      <div className={jekers}>
+        <div className={jekersContainer}>
+          {jekerData?.map((item, i) => (
+            <div key={i} className={jeker} onClick={handleGallery}>
+              <img src={item.Imagem} alt={item.Nome + '_portrait'} onClick={() => {getImage(item.Imagem)}}/>
+              <p>{item.Nome}</p>
+            </div>
+          ))}
+        </div>
+        <button type='button' onClick={handleGallery} className={closeBtn}>Fechar</button>
       </div>
-      <button type='button' onClick={close} className={closeBtn}>Fechar</button>
+      ) : null}
     </div>
   );
 }
@@ -39,4 +62,5 @@ export default Jekers;
 
 Jekers.propTypes = {
   close: propTypes.func,
+  pickImage: propTypes.bool,
 };
