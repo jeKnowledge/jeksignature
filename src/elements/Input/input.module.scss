@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.input {
+
+  label {
+    font-weight: bolder;
+    font-size: 20px;
+  }
+
+  input {
+    background-color: transparent;
+    border-style: none;
+    border-bottom: 1px solid white;
+    padding: 10px 0 5px 0;
+    color: white;
+
+    &[type="file"] {
+      border-style: none;
+    }
+  }
+}

@@ -1,15 +1,14 @@
 import React, { useRef } from 'react';
-import { exportComponentAsJPEG } from 'react-component-export-image';
 import PropTypes from 'prop-types';
-
-import Jekers from '../Jekers';
+import { exportComponentAsJPEG } from 'react-component-export-image';
+import Draggable from "react-draggable";
 
 import phoneIcon from '../../assets/tlm.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
 import githubIcon from '../../assets/github.svg';
 import behanceIcon from '../../assets/behance.svg';
 import logoJek from '../../assets/logo.svg';
-import {signatureContainer, mySignature, signatureInfo, contacts, signatureImage, logo} from './signature.module.scss';
+import {signatureContainer, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical} from './signature.module.scss';
 
 const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin, github, behance, portrait}, ref) => (
   <div className={mySignature} ref={ref}>
@@ -19,10 +18,12 @@ const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin,
       <h3>{course}</h3>
 
       <ul className={contacts}>
+      {phone !== '' ? (
         <li>
           <img src={phoneIcon} alt='mobile-icon' />
           <p>+351 {phone}</p>
         </li>
+        ) : null}
         {linkedin !== '' ? (
         <li>
           <img src={linkedinIcon} alt='linkedin-icon' />
@@ -44,12 +45,15 @@ const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin,
       </ul>
     </div>
 
-    {/* <div className={signatureImage}>
-      <Jekers pickImage/>
-    </div> */}
-    <Jekers pickImage/>
+    <div className={signatureImage}>
+      <Draggable>
+        <div>
+          <img src={portrait} alt='jeker-portrait'/>
+        </div>
+      </Draggable>
+    </div>
 
-    <img className={logo} src={logoJek} alt='jek-logo'/>
+    <img className={portrait !== null ? logo : logoVertical} src={logoJek} alt='jek-logo'/>
   </div>
 ));
 

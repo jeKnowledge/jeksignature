@@ -2,11 +2,27 @@
 
 .contentContainer {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
+  padding-bottom: 20px;
   background-color: $dark;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .intro {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 100px;
+    }
+  }
 }

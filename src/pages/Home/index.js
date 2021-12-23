@@ -1,12 +1,14 @@
 import React from 'react';
 import Form from '../../components/Form';
-import {contentContainer} from './home.module.scss';
+import {contentContainer, intro} from './home.module.scss';
 
 const Home = () => {
 
   return (
     <div className={contentContainer}>
-      <h1>jeKsignature</h1>
+      <div className={intro}>
+        <h1>jeKsignature</h1>
+      </div>
       <Form />
     </div>
   )

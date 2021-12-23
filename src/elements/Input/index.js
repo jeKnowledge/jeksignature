@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import {input} from './input.module.scss';
 
 const Input = ({label, type, name, placeHolder, onChange, mandatory}) => {
   return (
-    <div className='input'>
+    <div className={input}>
       <label>{label}</label>
       <input
         type={type}

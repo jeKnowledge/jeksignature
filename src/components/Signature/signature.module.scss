@@ -1,6 +1,14 @@
 @import '../../styles/variables.scss';
 
 .signatureContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  button {
+    align-self: flex-end;
+  }
+
   .mySignature {
     width: 600px;
     height: 200px;
@@ -20,6 +28,13 @@
       top: 48%;
       width: 100px;
       transform: rotate(-90deg) translateY(-50%);
+    }
+
+    .logoVertical {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 150px;
     }
 
     .signatureInfo {
@@ -63,10 +78,10 @@
       }
     }
 
-    div:last-child {
+    .signatureImage {
       background: $lightBlue;
       width: 500px;
-      height: 400px;
+      height: 350px;
 
       position: absolute;
       right: -120px;
@@ -76,16 +91,32 @@
 
       overflow: hidden;
 
-      img {
+      div {
         position: absolute;
-        width: 120%;
+        width: 500px;
+        height: 350px;
 
-        /*mexe com estas medidas para centrar a pessoa*/
-        right: -50px;
-        top: -200px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        cursor: grab;
 
-        transform: rotate(60deg);
-        object-fit: cover;
+        img {
+          width: 80%;
+          // position: absolute;
+          object-fit: cover;
+          transform: rotate(60deg);
+
+          cursor: grab;
+
+          user-drag: none;
+          user-select: none;
+          -moz-user-select: none;
+          -webkit-user-drag: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+        }
       }
     }
   }

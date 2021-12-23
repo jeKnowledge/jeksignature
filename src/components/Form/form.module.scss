@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+
+.formContainer {
+  width: 90%;
+  min-height: 100vh;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  .form {
+    width: 50%;
+
+    h3 {
+      margin: 10px 0;
+      color: $lightBlue;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+
+    .importImage {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        width: 100px;
+      }
+    }
+  }
+
+  >div {
+    >div:first-child {
+      outline: 4px solid $black;
+    }
+  }
+}
