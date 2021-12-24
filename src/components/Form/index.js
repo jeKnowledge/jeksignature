@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {formContainer, form, inputField, contacts, importImage} from './form.module.scss';
+import {formContainer, form, inputField, contacts, importImage, upload} from './form.module.scss';
 import {jekers, jekersContainer, jeker, closeBtn} from './jekers.module.scss';
 import Input from '../../elements/Input';
 import Signature from '../Signature';
@@ -122,7 +122,8 @@ const Form = () => {
 
             <Input
               label='LinkedIn'
-              // https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
+              labelIcon='fas fa-question-circle'
+              labelIconUrl='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'
               type='text'
               name='linkedin'
               placeHolder='Username do linkedn'
@@ -151,16 +152,26 @@ const Form = () => {
 
           <br/>
 
+          <h3>Fotografia:</h3>
           <div className={importImage}>
-            <Input
-              label='Fotografia'
-              type='file'
-              name='photo'
-              onChange={(e)=>setPhoto(URL.createObjectURL(e.target.files[0]))}
-              // mandatory
-            />
+            <label class={upload}>
+              <input
+                type="file"
+                name='photo'
+                accept=".png, .jpeg, .jpg, .tiff"
+                max={1}
+                onChange={(e)=>setPhoto(URL.createObjectURL(e.target.files[0]))}
+              />
+              <i className="fas fa-arrow-circle-up"></i>
+              <span>Importar foto</span>
+            </label>
+
             <span>ou</span>
-            <button type='button' onClick={handleGallery}>Escolher foto</button>
+
+            <button type='button' onClick={handleGallery}>
+              <i className="fab fa-google-drive"></i>
+              <span>Escolher foto da drive</span>
+            </button>
           </div>
 
           {showGallery ? (
@@ -178,7 +189,7 @@ const Form = () => {
                 </>
               ))}
             </div>
-            <button type='button' onClick={handleGallery} className={closeBtn}>Fechar</button>
+            <button type='button' onClick={handleGallery} className={closeBtn}><i class="fas fa-times"></i></button>
           </div>
           ) : null}
           

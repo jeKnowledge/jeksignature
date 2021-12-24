@@ -8,7 +8,7 @@ import linkedinIcon from '../../assets/linkedin.svg';
 import githubIcon from '../../assets/github.svg';
 import behanceIcon from '../../assets/behance.svg';
 import logoJek from '../../assets/logo.svg';
-import {signatureContainer, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical} from './signature.module.scss';
+import {signatureContainer, annotation, annotationHide, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical} from './signature.module.scss';
 
 const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin, github, behance, portrait}, ref) => (
   <div className={mySignature} ref={ref}>
@@ -63,7 +63,7 @@ const Signature = ({ jekerName, jekerRole, jekerCourse, jekerPhone, jekerLinkedi
 
   return (
     <div className={signatureContainer}>
-
+      <span className={jekerPortrait !== null ? annotation : `${annotation} ${annotationHide}`}>Arrasta a imagem para a ajustares</span>
       <ComponentToPrint
         ref={signatureRef}
         name={jekerName}
@@ -76,7 +76,8 @@ const Signature = ({ jekerName, jekerRole, jekerCourse, jekerPhone, jekerLinkedi
         portrait={jekerPortrait}
       />
       <button onClick={() => exportComponentAsJPEG(signatureRef)}>
-        Export As JPEG
+        <i className="fas fa-arrow-circle-down"></i>
+        <span>Transferir</span>
       </button>
       
     </div>
