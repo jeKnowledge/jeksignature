@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.jekers {
+.tutorial {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -40,30 +40,21 @@
     }
   }
 
-  .jekersContainer {
+  .tutorialContainer {
     width: 80%;
     height: 80%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
     background-color: $dark;
     padding: 20px;
     overflow-y: auto;
 
-    .jeker {
-      text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-      img {
-        cursor: pointer;
-      }
-
-      p {
-        margin-top: 5px;
-      }
-
-      &:first-child {
-        display: none;
-      }
+    >div {
+      width: 100% !important;
+      height: 100% !important;
     }
   }
 }

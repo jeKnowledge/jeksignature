@@ -50,7 +50,7 @@ const Form = () => {
       var textObject = JSON.parse(originalText.substring(47).slice(0, -2));
       window.teamContent = textObject.table.rows;
       var jekMember = textObject.table.rows;
-      console.log(jekMember);
+      // console.log(jekMember);
       setJekerData(jekMember);
     }
   };
@@ -62,9 +62,6 @@ const Form = () => {
   const getImage = (image) => {
     setPhoto(image);
    }   
-
-   console.log(photo);
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();

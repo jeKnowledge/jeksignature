@@ -1,14 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { exportComponentAsJPEG } from 'react-component-export-image';
 import Draggable from "react-draggable";
+
+import Tutorial from '../Tutorial'
 
 import phoneIcon from '../../assets/tlm.svg';
 import linkedinIcon from '../../assets/linkedin.svg';
 import githubIcon from '../../assets/github.svg';
 import behanceIcon from '../../assets/behance.svg';
 import logoJek from '../../assets/logo.svg';
-import {signatureContainer, annotation, annotationHide, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical} from './signature.module.scss';
+import {signatureContainer, annotation, annotationHide, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical, btnWrapper} from './signature.module.scss';
 
 const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin, github, behance, portrait}, ref) => (
   <div className={mySignature} ref={ref}>
@@ -58,29 +60,44 @@ const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin,
 ));
 
 const Signature = ({ jekerName, jekerRole, jekerCourse, jekerPhone, jekerLinkedin, jekerGithub, jekerBehance, jekerPortrait }) => {
-
   const signatureRef = useRef();
+  const [download, setDownload] = useState(false);
+
+  const handleTutorial = () =>{
+    setDownload(!download);
+  }
 
   return (
-    <div className={signatureContainer}>
-      <span className={jekerPortrait !== null ? annotation : `${annotation} ${annotationHide}`}>Arrasta a imagem para a ajustares</span>
-      <ComponentToPrint
-        ref={signatureRef}
-        name={jekerName}
-        role={jekerRole}
-        course={jekerCourse}
-        phone={jekerPhone}
-        linkedin={jekerLinkedin}
-        github={jekerGithub}
-        behance={jekerBehance}
-        portrait={jekerPortrait}
-      />
-      <button onClick={() => exportComponentAsJPEG(signatureRef)}>
-        <i className="fas fa-arrow-circle-down"></i>
-        <span>Transferir</span>
-      </button>
-      
-    </div>
+    <>
+      <div className={signatureContainer}>
+        <span className={jekerPortrait !== null ? annotation : `${annotation} ${annotationHide}`}>Arrasta a imagem para a ajustares</span>
+        <ComponentToPrint
+          ref={signatureRef}
+          name={jekerName}
+          role={jekerRole}
+          course={jekerCourse}
+          phone={jekerPhone}
+          linkedin={jekerLinkedin}
+          github={jekerGithub}
+          behance={jekerBehance}
+          portrait={jekerPortrait}
+        />
+
+        <div className={btnWrapper}>
+          <a href='/'><i className="fas fa-redo-alt"></i></a>
+          <button
+            onClick={() => {
+              exportComponentAsJPEG(signatureRef, {fileName: 'myJeKsignature'});
+              handleTutorial()
+            } }>
+            <i className="fas fa-arrow-circle-down"></i>
+            <span>Transferir</span>
+          </button>
+        </div>
+        
+      </div>
+      {download ? <Tutorial close={handleTutorial}/> : null}
+    </>
   )
 }
 
