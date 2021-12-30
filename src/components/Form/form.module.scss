@@ -2,9 +2,11 @@
 @import '../../styles/mixins.scss';
 
 .formContainer {
-  width: 90%;
+  width: 100%;
   min-height: 100vh;
-  padding: 20px 0;
+  padding: 20px 5%;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: space-between;

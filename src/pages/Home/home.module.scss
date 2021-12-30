@@ -2,11 +2,9 @@
 
 .contentContainer {
   width: 100vw;
-  // height: 100vh;
+  height: 100vh;
   padding-bottom: 20px;
   background-color: $dark;
-  overflow-x: hidden;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
@@ -16,6 +14,9 @@
   .intro {
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    background-color: $dark;
+    z-index: 3;
 
     display: flex;
     flex-direction: column;
@@ -24,6 +25,19 @@
 
     h1 {
       font-size: 100px;
+    }
+
+    &Fade {
+      visibility: visible;
+      transition: all 1s;
+      opacity: 1;
+    }
+
+    &FadeOut {
+      visibility: hidden;
+      transition: all 1s;
+      transform: translateY(-100%);
+      opacity: 0;
     }
   }
 }

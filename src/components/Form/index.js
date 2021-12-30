@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {formContainer, form, inputField, contacts, importImage, upload} from './form.module.scss';
-import {jekers, jekersContainer, jeker, closeBtn} from './jekers.module.scss';
+
 import Input from '../../elements/Input';
 import Signature from '../Signature';
+import Loading from '../Loading';
+
+import {formContainer, form, inputField, contacts, importImage, upload} from './form.module.scss';
+import {jekers, jekersContainer, jeker, closeBtn} from './jekers.module.scss';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -15,6 +18,7 @@ const Form = () => {
   const [photo, setPhoto] = useState('');
 
   const [showGallery, setShowGallery] = useState(false);
+  const [loadingComponent, setLoadingComponent] = useState(true);
   const [jekerData, setJekerData] = useState();
 
   const [showSignature, setShowSignature] = useState('');
@@ -22,6 +26,10 @@ const Form = () => {
 
   const handleGallery = () => {
     setShowGallery(!showGallery);
+
+    setTimeout(() => {
+      setLoadingComponent(false);
+    }, 6000);
   }
   const getData = () => {
     var teamContent = new XMLHttpRequest();
@@ -58,6 +66,9 @@ const Form = () => {
   useEffect(() => {
     getData();
   }, []);
+
+
+  console.log(loadingComponent);
 
   const getImage = (image) => {
     setPhoto(image);
@@ -174,6 +185,9 @@ const Form = () => {
           {showGallery ? (
           <div className={jekers}>
             <div className={jekersContainer}>
+
+              {loadingComponent ? <Loading /> : null}
+              
               {jekerData?.map((item, i) => (
                 <>
                   {item.c[1].v !== null ?
