@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/jeksignature/static/css/main.f4a92ca5.chunk.css",
+    "main.js": "/jeksignature/static/js/main.33450a7f.chunk.js",
+    "main.js.map": "/jeksignature/static/js/main.33450a7f.chunk.js.map",
+    "runtime-main.js": "/jeksignature/static/js/runtime-main.7bf99ab5.js",
+    "runtime-main.js.map": "/jeksignature/static/js/runtime-main.7bf99ab5.js.map",
+    "static/js/2.a1e9b5dc.chunk.js": "/jeksignature/static/js/2.a1e9b5dc.chunk.js",
+    "static/js/2.a1e9b5dc.chunk.js.map": "/jeksignature/static/js/2.a1e9b5dc.chunk.js.map",
+    "index.html": "/jeksignature/index.html",
+    "static/css/main.f4a92ca5.chunk.css.map": "/jeksignature/static/css/main.f4a92ca5.chunk.css.map",
+    "static/js/2.a1e9b5dc.chunk.js.LICENSE.txt": "/jeksignature/static/js/2.a1e9b5dc.chunk.js.LICENSE.txt",
+    "static/media/global.scss": "/jeksignature/static/media/SuisseIntlCond-Regular-WebS.679c80ca.ttf",
+    "static/media/behance.dfdb184b.svg": "/jeksignature/static/media/behance.dfdb184b.svg",
+    "static/media/github.ec5027ab.svg": "/jeksignature/static/media/github.ec5027ab.svg",
+    "static/media/linkedin.8eadb388.svg": "/jeksignature/static/media/linkedin.8eadb388.svg",
+    "static/media/logo.0c7537e5.svg": "/jeksignature/static/media/logo.0c7537e5.svg",
+    "static/media/tlm.26bf1ed7.svg": "/jeksignature/static/media/tlm.26bf1ed7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7bf99ab5.js",
+    "static/js/2.a1e9b5dc.chunk.js",
+    "static/css/main.f4a92ca5.chunk.css",
+    "static/js/main.33450a7f.chunk.js"
+  ]
+}
