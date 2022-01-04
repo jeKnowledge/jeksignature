@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .jekers {
   width: 100%;
@@ -15,41 +16,63 @@
 
   z-index: 3;
 
-  .closeBtn {
-    position: absolute;
-    right: 40px;
-    top: 40px;
-
-    background-color: transparent;
-    border-style: none;
-    color: white;
-    border: 1px solid #ccc;
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
+  .jekersHeader {
+    background-color: $dark;
+    width: 80%;
+    padding: 20px;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    align-self: flex-end;
-    gap: 6px;
 
-    i {
-      font-size: 16px;
+    @include mobile {
       width: 100%;
+    }
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      color: white;
+      border: 1px solid #ccc;
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      align-self: flex-end;
+      gap: 6px;
+
+      i {
+        font-size: 16px;
+        width: 100%;
+      }
     }
   }
 
   .jekersContainer {
     width: 80%;
     height: 80%;
+
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
+
     background-color: $dark;
     padding: 20px;
     overflow-y: auto;
     position: relative;
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mobile {
+      width: 100%;
+      height: fit-content;
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     .jeker {
       text-align: center;

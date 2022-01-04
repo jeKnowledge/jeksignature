@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .contentContainer {
   width: 100vw;
@@ -11,10 +12,16 @@
   align-items: center;
   justify-content: center;
 
+  @include tablet {
+    height: initial;
+  }
+
   .intro {
     width: 100vw;
     height: 100vh;
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: $dark;
     z-index: 3;
 
@@ -23,8 +30,9 @@
     justify-content: center;
     align-items: center;
 
-    h1 {
-      font-size: 100px;
+    img {
+      margin-left: 10%;
+      filter: brightness(0) saturate(100%) invert(79%) sepia(5%) saturate(4716%) hue-rotate(167deg) brightness(101%) contrast(86%);
     }
 
     &Fade {
@@ -36,8 +44,12 @@
     &FadeOut {
       visibility: hidden;
       transition: all 1s;
-      transform: translateY(-100%);
+      // transform: translateY(-100%);
       opacity: 0;
+
+      img {
+        opacity: 0;
+      }
     }
   }
 }

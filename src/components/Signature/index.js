@@ -5,11 +5,11 @@ import Draggable from "react-draggable";
 
 import Tutorial from '../Tutorial'
 
-import phoneIcon from '../../assets/tlm.svg';
-import linkedinIcon from '../../assets/linkedin.svg';
-import githubIcon from '../../assets/github.svg';
-import behanceIcon from '../../assets/behance.svg';
-import logoJek from '../../assets/logo.svg';
+import phoneIcon from '../../assets/tlm.png';
+import linkedinIcon from '../../assets/linkedin.png';
+import githubIcon from '../../assets/github.png';
+import behanceIcon from '../../assets/behance.png';
+import logoJek from '../../assets/logo.png';
 import {signatureContainer, annotation, annotationHide, mySignature, signatureInfo, contacts, signatureImage, logo, logoVertical, btnWrapper} from './signature.module.scss';
 
 const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin, github, behance, portrait}, ref) => (
@@ -65,6 +65,12 @@ const Signature = ({ jekerName, jekerRole, jekerCourse, jekerPhone, jekerLinkedi
 
   const handleTutorial = () =>{
     setDownload(!download);
+    if(!download) {
+      document.body.style.position = 'fixed';
+    }
+    else{
+      document.body.style.position = 'unset';
+    }
   }
 
   return (

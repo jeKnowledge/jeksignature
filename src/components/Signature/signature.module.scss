@@ -1,9 +1,18 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .signatureContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @include tablet {
+    width: 100%;
+    padding: 0 4px 20px 4px;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
 
   .annotation {
     text-align: right;
@@ -20,6 +29,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include tablet {
+      position: sticky;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin-top: 10px;
+      width: 100%;
+    }
 
     i {
       font-size: 16px;
@@ -118,14 +136,12 @@
       background: $lightBlue;
       width: 500px;
       height: 350px;
-
       position: absolute;
       right: -120px;
       top: 0;
-
       transform: rotate(-60deg);
-
-      overflow: hidden;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: none;
 
       div {
         position: absolute;
@@ -143,6 +159,7 @@
           // position: absolute;
           object-fit: cover;
           transform: rotate(60deg);
+          opacity: 0.8;
 
           cursor: grab;
 
@@ -152,6 +169,17 @@
           -webkit-user-drag: none;
           -webkit-user-select: none;
           -ms-user-select: none;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(124, 204, 237, 0.2);
+          }
         }
       }
     }

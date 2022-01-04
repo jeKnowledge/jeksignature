@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .tutorial {
   width: 100%;
@@ -15,28 +16,48 @@
 
   z-index: 3;
 
-  .closeBtn {
-    position: absolute;
-    right: 40px;
-    top: 40px;
-
-    background-color: transparent;
-    border-style: none;
-    color: white;
-    border: 1px solid #ccc;
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
+  .tutorialHeader {
+    background-color: $dark;
+    width: 80%;
+    padding: 20px;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    align-self: flex-end;
-    gap: 6px;
 
-    i {
-      font-size: 16px;
+    @include mobile {
       width: 100%;
+    }
+
+    a {
+      color: $lightBlue;
+      font: $subtitle;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      color: white;
+      border: 1px solid #ccc;
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      align-self: flex-end;
+      gap: 6px;
+
+      i {
+        font-size: 16px;
+        width: 100%;
+      }
     }
   }
 
@@ -51,6 +72,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mobile {
+      width: 100%;
+      height: 100%;
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     >div {
       width: 100% !important;

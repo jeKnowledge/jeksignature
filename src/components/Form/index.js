@@ -5,7 +5,7 @@ import Signature from '../Signature';
 import Loading from '../Loading';
 
 import {formContainer, form, inputField, contacts, importImage, upload} from './form.module.scss';
-import {jekers, jekersContainer, jeker, closeBtn} from './jekers.module.scss';
+import {jekers, jekersHeader, jekersContainer, jeker} from './jekers.module.scss';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -27,10 +27,18 @@ const Form = () => {
   const handleGallery = () => {
     setShowGallery(!showGallery);
 
+    if(!showGallery) {
+      document.body.style.position = 'fixed';
+    }
+    else{
+      document.body.style.position = 'unset';
+    }
+
     setTimeout(() => {
       setLoadingComponent(false);
     }, 6000);
   }
+
   const getData = () => {
     var teamContent = new XMLHttpRequest();
 
@@ -134,7 +142,7 @@ const Form = () => {
               labelIconUrl='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'
               type='text'
               name='linkedin'
-              placeHolder='Username do linkedn'
+              placeHolder='Username do linkedisn'
               onChange={(e)=>setLinkedin(e.target.value)}
               // mandatory
             />
@@ -184,6 +192,10 @@ const Form = () => {
 
           {showGallery ? (
           <div className={jekers}>
+            <div className={jekersHeader}>
+              <h2>Escolhe a tua foto:</h2>
+              <button type='button' onClick={handleGallery}><i class="fas fa-times"></i></button>
+            </div>
             <div className={jekersContainer}>
 
               {loadingComponent ? <Loading /> : null}
@@ -200,22 +212,21 @@ const Form = () => {
                 </>
               ))}
             </div>
-            <button type='button' onClick={handleGallery} className={closeBtn}><i class="fas fa-times"></i></button>
           </div>
           ) : null}
           
         </div>
       </form>
-        <Signature 
-          jekerName={name}
-          jekerRole={role}
-          jekerCourse={course}
-          jekerPhone={phone}
-          jekerLinkedin={linkedin}
-          jekerGithub={github}
-          jekerBehance={behance}
-          jekerPortrait={photo !== '' ? photo : null}
-        />
+      <Signature 
+        jekerName={name}
+        jekerRole={role}
+        jekerCourse={course}
+        jekerPhone={phone}
+        jekerLinkedin={linkedin}
+        jekerGithub={github}
+        jekerBehance={behance}
+        jekerPortrait={photo !== '' ? photo : null}
+      />
     </div>
   )
 }
