@@ -49,9 +49,11 @@ const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin,
 
     <div className={signatureImage}>
       <Draggable>
-        <div>
-          <img src={portrait} alt='jeker-portrait'/>
-        </div>
+        {portrait !== '' ? (
+          <div>
+            <img src={portrait} alt='jeker-portrait'/>
+          </div>
+        ) : null}
       </Draggable>
     </div>
 
@@ -93,8 +95,8 @@ const Signature = ({ jekerName, jekerRole, jekerCourse, jekerPhone, jekerLinkedi
           <a href='/'><i className="fas fa-redo-alt"></i></a>
           <button
             onClick={() => {
-              exportComponentAsJPEG(signatureRef, {fileName: 'myJeKsignature'});
-              handleTutorial()
+              exportComponentAsJPEG(signatureRef, {fileName: 'myJeKsignature.jpg'});
+              handleTutorial();
             } }>
             <i className="fas fa-arrow-circle-down"></i>
             <span>Transferir</span>

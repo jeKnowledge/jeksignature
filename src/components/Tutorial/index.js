@@ -14,10 +14,7 @@ const Tutorial = ({close}) => {
       <div className={tutorialContainer}>
         <ReactPlayer
           url='tutorial.mp4'
-          playing
-          loop
           controls
-          muted
         />
       </div>
     </div>

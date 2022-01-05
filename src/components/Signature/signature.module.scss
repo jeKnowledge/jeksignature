@@ -143,6 +143,21 @@
       overflow-x: hidden;
       -webkit-overflow-scrolling: none;
 
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: rotate(60deg);
+        width: 500px;
+        height: 350px;
+        background: rgba(124, 204, 237, 0.2);
+        pointer-events: none;
+      }
+
       div {
         position: absolute;
         width: 500px;
@@ -156,10 +171,9 @@
 
         img {
           width: 80%;
-          // position: absolute;
+          position: relative;
           object-fit: cover;
           transform: rotate(60deg);
-          opacity: 0.8;
 
           cursor: grab;
 
@@ -169,17 +183,6 @@
           -webkit-user-drag: none;
           -webkit-user-select: none;
           -ms-user-select: none;
-
-          &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(124, 204, 237, 0.2);
-          }
         }
       }
     }
