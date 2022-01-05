@@ -29,7 +29,7 @@ const ComponentToPrint = React.forwardRef(({name, role, course, phone, linkedin,
         {linkedin !== '' ? (
         <li>
           <img src={linkedinIcon} alt='linkedin-icon' />
-          <p>linkedin/{linkedin}</p>
+          <p>linkedin/in/{linkedin}</p>
         </li>
         ) : null}
         {github !== '' ? (
