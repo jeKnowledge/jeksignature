@@ -142,7 +142,7 @@ const Form = () => {
               labelIconUrl='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'
               type='text'
               name='linkedin'
-              placeHolder='Username do linkedisn'
+              placeHolder='Username do linkedin'
               onChange={(e)=>setLinkedin(e.target.value)}
               // mandatory
             />
